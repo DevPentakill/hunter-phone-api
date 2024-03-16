@@ -1,6 +1,6 @@
 
 //Creating a function that will fetch data from PH server
-const loadPhone = async (searchText) => {
+const loadPhone = async (searchText,isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json();
   //putting all the phones information in a variable called phones
@@ -11,10 +11,10 @@ const loadPhone = async (searchText) => {
   spinLoader(false);
 
   //passing that variable to the display method, this will take the phones array and loop through each element and show them in UI
-  displayPhones(phones);
+  displayPhones(phones, isShowAll);
 }
 
-const displayPhones = (phones) => {
+const displayPhones = (phones, isShowAll) => {
 
   //Step 1 using dom to catch the empty container of HTML
   const phoneContainer = document.getElementById('phone-container');
@@ -23,7 +23,8 @@ const displayPhones = (phones) => {
 
   //catching the show all button
   const showAll = document.getElementById('show-btn');
-  if (phones.length > 12) {
+  
+  if (phones.length > 12 && !isShowAll) {
     phones = phones.slice(0, 12);
     showAll.classList.remove('hidden');
   } else {
@@ -31,7 +32,8 @@ const displayPhones = (phones) => {
   }
 
   phones.forEach((phone, index) => {
-    console.log(phone);
+    // console.log(phone);
+
     // Step 2 create empty card
     const phoneCard = document.createElement('div');
     phoneCard.classList = "card w-72 bg-green-100 shadow-xl p-3 m-3";
@@ -60,11 +62,11 @@ const displayPhones = (phones) => {
 }
 
 //handeling the search button
-const searchClick = () => {
+const searchClick = (isShowAll) => {
   const searchInput = document.getElementById('searchField');
   const searchText = searchInput.value;
   spinLoader(true);
-  loadPhone(searchText);
+  loadPhone(searchText,isShowAll);
 
 }
 
@@ -82,5 +84,6 @@ const spinLoader = (isLoading) => {
 
 //handling the show all button
 const handleShowAll = () =>{
-  console.log('angta lagse');
+  // console.log('angta lagse');
+  searchClick(true);
 }
