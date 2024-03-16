@@ -12,15 +12,17 @@ const loadPhone = async () => {
 loadPhone();
 
 const displayPhones = (phones) =>{
+
+    //Step 1 using dom to catch the empty container of HTML
     const phoneContainer = document.getElementById('phone-container');
     // console.log(phones);
     phones.forEach((phone,index) => {
         console.log(phone);
-        // Step 1 create empty card
+        // Step 2 create empty card
         const phoneCard = document.createElement('div');
-        phoneCard.classList = "card w-96 bg-green-100 shadow-xl p-3 m-3";
+        phoneCard.classList = "card w-72 bg-green-100 shadow-xl p-3 m-3";
 
-        //Step2 setup card content with inner html
+        //Step 3 setup card content with inner html
         phoneCard.innerHTML = `
         <figure><img src="${phone.image}" alt="${phone.brand}" />
         </figure>
@@ -36,7 +38,7 @@ const displayPhones = (phones) =>{
           </div>
         </div>
         `
-        //step3 adding it to the empty container in HTML
+        //step 4 Appending it to the empty container in HTML
         phoneContainer.appendChild(phoneCard);
 
     });
