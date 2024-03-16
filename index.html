@@ -80,10 +80,15 @@
 
     <!-- all phones collection -->
     <section>
+      <!-- spinner before the phones load -->
+      <div id="spin-load" class="text-center mt-56 hidden">
+        <span class="loading loading-dots loading-lg"></span>
+      </div>
+      
       <!-- all phones container -->
       <div id="phone-container" class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       </div>
-
+      <!-- show button below phones container -->
       <div id="show-btn" class="w-3/12 mx-auto my-5 hidden">
         <button class="btn btn-success btn-wide">SHow All</button>
       </div>

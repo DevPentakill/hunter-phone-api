@@ -6,7 +6,11 @@ const loadPhone = async (searchText) => {
   //putting all the phones information in a variable called phones
   const phones = data.data;
   // console.log(phones);
-  //passing that variable to the display method, this will
+  
+  //implemented differently than the module system. This will stop the loading animation when the phones are shown
+  spinLoader(false);
+
+  //passing that variable to the display method, this will take the phones array and loop through each element and show them in UI
   displayPhones(phones);
 }
 
@@ -19,13 +23,13 @@ const displayPhones = (phones) => {
 
   //catching the show all button
   const showAll = document.getElementById('show-btn');
-  if(phones.length >12){
-    phones = phones.slice(0,12);
+  if (phones.length > 12) {
+    phones = phones.slice(0, 12);
     showAll.classList.remove('hidden');
-  }else{
+  } else {
     showAll.classList.add('hidden');
   }
-  
+
   phones.forEach((phone, index) => {
     console.log(phone);
     // Step 2 create empty card
@@ -52,13 +56,26 @@ const displayPhones = (phones) => {
     phoneContainer.appendChild(phoneCard);
 
   });
+  // spinLoader(false);
 }
 
 //handeling the search button
 const searchClick = () => {
   const searchInput = document.getElementById('searchField');
   const searchText = searchInput.value;
-  console.log(searchText);
+  spinLoader(true);
   loadPhone(searchText);
-  
+
+}
+
+//function to call spinner loader
+const spinLoader = (isLoading) => {
+  const spinDIv = document.getElementById('spin-load');
+
+  if (isLoading) {
+    spinDIv.classList.remove('hidden');
+  }else{
+    spinDIv.classList.add('hidden');
+  }
+
 }
