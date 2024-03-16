@@ -23,7 +23,7 @@ const displayPhones = (phones, isShowAll) => {
 
   //catching the show all button
   const showAll = document.getElementById('show-btn');
-  
+
   if (phones.length > 12 && !isShowAll) {
     phones = phones.slice(0, 12);
     showAll.classList.remove('hidden');
@@ -50,7 +50,7 @@ const displayPhones = (phones, isShowAll) => {
           <h2 class="font-semibold text-amber-700">BDT ${index}0,000</h2>
 
           <div class="card-actions justify-center">
-            <button class="btn btn-primary">Show Details</button>
+            <button onclick="showDeetz()" class="btn btn-primary">Show Details</button>
           </div>
         </div>
         `;
@@ -86,4 +86,9 @@ const spinLoader = (isLoading) => {
 const handleShowAll = () =>{
   // console.log('angta lagse');
   searchClick(true);
+}
+
+//handeling the show details button in the phone cards
+const showDeetz=()=>{
+console.log('per favor');
 }
