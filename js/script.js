@@ -1,6 +1,6 @@
 
 //Creating a function that will fetch data from PH server
-const loadPhone = async (searchText = 'iphone', isShowAll) => {
+const loadPhone = async (searchText, isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json();
   //putting all the phones information in a variable called phones
@@ -13,7 +13,8 @@ const loadPhone = async (searchText = 'iphone', isShowAll) => {
   //passing that variable to the display method, this will take the phones array and loop through each element and show them in UI
   displayPhones(phones, isShowAll);
 }
-loadPhone();
+
+
 const displayPhones = (phones, isShowAll) => {
 
   //Step 1 using dom to catch the empty container of HTML
@@ -102,7 +103,7 @@ const displayDeetz = (phoneDeetz) => {
   console.log(phoneDeetz);
   const phoneDeetzContainer = document.getElementById('show-deetz-container');
   phoneDeetzContainer.innerHTML = `
-  <img src="${phoneDeetz.image}" alt="${phoneDeetz.brand}" class="mx-auto"></img>
+  <img src="${phoneDeetz.image}" alt="${phoneDeetz.brand}" class="mx-auto">
   <h3 class="font-bold text-lg">${phoneDeetz.name}</h3>
   <p class="py-2 text-sm">Contact Darius to grab this marvelous ${phoneDeetz.name}!</p>
   <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Storage:</span> ${phoneDeetz?.mainFeatures?.storage}</p>

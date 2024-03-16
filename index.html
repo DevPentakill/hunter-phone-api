@@ -58,22 +58,26 @@
 
   <main class="max-w-6xl mx-auto">
     <!-- hero starts here -->
-    <div class="hero min-h-max bg-[#bae6fd]">
+    <div class="hero min-h-max bg-[#bae6fd] relative">
       <div class="hero-content text-center">
-        <div class="max-w-md">
+        <div class="max-w-md mb-80">
           <h1 class="text-5xl font-bold">Apple iphone 13 Pro Max</h1>
           <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
             quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           <button class="btn btn-primary">Buy Now</button>
         </div>
       </div>
+      <!-- hero image section -->
+      <div class="w-[841px] h-[585px] absolute top-1/2">
+        <img src="./images/hero.png" alt="">
+      </div>
+      
     </div>
     <!-- hero ends here -->
 
-    <h2 class="text-6xl my-6 text-center">Phone Hunting Season</h2>
-
     <!-- search functionality -->
-    <section class="w-1/2 mx-auto">
+    <section class="w-3/4 mx-auto mt-96">
+      <h2 class="text-6xl my-6 text-center">Phone Hunting Season</h2>
       <input id="searchField" type="text" placeholder="Search...."
         class="input input-bordered input-accent w-full max-w-xs text-center" />
       <button onclick="searchClick()" class="btn btn-accent">Search</button>
@@ -98,13 +102,13 @@
     <!-- modal section starts here -->
     <section>
       <!-- Open the modal using ID.showModal() method -->
-    
+
       <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
 
         <div class="modal-box">
 
           <div id="show-deetz-container">
-           <!-- Gonna add everything using DOM manipulation through JS -->
+            <!-- Gonna add everything using DOM manipulation through JS -->
           </div>
           <div class="modal-action">
             <form method="dialog">
