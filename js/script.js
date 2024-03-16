@@ -5,7 +5,7 @@ const loadPhone = async (searchText,isShowAll) => {
   const data = await res.json();
   //putting all the phones information in a variable called phones
   const phones = data.data;
-  // console.log(phones);
+  console.log(phones);
   
   //implemented differently than the module system. This will stop the loading animation when the phones are shown
   spinLoader(false);
@@ -50,7 +50,7 @@ const displayPhones = (phones, isShowAll) => {
           <h2 class="font-semibold text-amber-700">BDT ${index}0,000</h2>
 
           <div class="card-actions justify-center">
-            <button onclick="showDeetz()" class="btn btn-primary">Show Details</button>
+            <button onclick="showDeetz('${phone.slug}')" class="btn btn-primary">Show Details</button>
           </div>
         </div>
         `;
@@ -89,6 +89,9 @@ const handleShowAll = () =>{
 }
 
 //handeling the show details button in the phone cards
-const showDeetz=()=>{
-console.log('per favor');
+const showDeetz= async(slage)=>{
+// console.log(slage);
+const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slage}`);
+const phoneDeetz = await res.json();
+console.log(phoneDeetz);
 }
