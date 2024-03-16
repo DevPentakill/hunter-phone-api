@@ -16,7 +16,16 @@ const displayPhones = (phones) => {
   const phoneContainer = document.getElementById('phone-container');
   //clearing all the previosuly loaded phones
   phoneContainer.textContent = '';
-  // console.log(phones);
+
+  //catching the show all button
+  const showAll = document.getElementById('show-btn');
+  if(phones.length >12){
+    phones = phones.slice(0,12);
+    showAll.classList.remove('hidden');
+  }else{
+    showAll.classList.add('hidden');
+  }
+  
   phones.forEach((phone, index) => {
     console.log(phone);
     // Step 2 create empty card
