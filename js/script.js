@@ -79,3 +79,8 @@ const spinLoader = (isLoading) => {
   }
 
 }
+
+//handling the show all button
+const handleShowAll = () =>{
+  console.log('angta lagse');
+}
