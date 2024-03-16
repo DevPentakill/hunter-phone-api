@@ -105,14 +105,14 @@ const displayDeetz = (phoneDeetz) => {
   <img src="${phoneDeetz.image}" alt="${phoneDeetz.brand}" class="mx-auto"></img>
   <h3 class="font-bold text-lg">${phoneDeetz.name}</h3>
   <p class="py-2 text-sm">Contact Darius to grab this marvelous ${phoneDeetz.name}!</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Storage:</span> ${phoneDeetz.mainFeatures.storage}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Display Size:</span> ${phoneDeetz.mainFeatures.displaySize}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Chipset:</span> ${phoneDeetz.mainFeatures.chipSet}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Memory:</span> ${phoneDeetz.mainFeatures.memory}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Slug:</span> ${phoneDeetz.slug}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Release Date:</span> ${phoneDeetz.releaseDate}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Brand:</span> ${phoneDeetz.brand}</p>
-  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">GPS:</span> ${phoneDeetz.others.GPS}</p>
-
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Storage:</span> ${phoneDeetz?.mainFeatures?.storage}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Display Size:</span> ${phoneDeetz?.mainFeatures?.displaySize}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Chipset:</span> ${phoneDeetz?.mainFeatures?.chipSet}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Memory:</span> ${phoneDeetz?.mainFeatures?.memory}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Slug:</span> ${phoneDeetz?.slug}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Release Date:</span> ${phoneDeetz?.releaseDate}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Brand:</span> ${phoneDeetz?.brand}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">GPS:</span> ${phoneDeetz?.others?.GPS}</p>
   `;
 }
+//must use ? to avoid error in case the property doesn't exsit in object while accessing NESTED OBJECT DATA
