@@ -1,19 +1,19 @@
 
 //Creating a function that will fetch data from PH server
-const loadPhone = async (searchText,isShowAll) => {
+const loadPhone = async (searchText = 'iphone', isShowAll) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
   const data = await res.json();
   //putting all the phones information in a variable called phones
   const phones = data.data;
-  console.log(phones);
-  
+  // console.log(phones);
+
   //implemented differently than the module system. This will stop the loading animation when the phones are shown
   spinLoader(false);
 
   //passing that variable to the display method, this will take the phones array and loop through each element and show them in UI
   displayPhones(phones, isShowAll);
 }
-
+loadPhone();
 const displayPhones = (phones, isShowAll) => {
 
   //Step 1 using dom to catch the empty container of HTML
@@ -50,11 +50,11 @@ const displayPhones = (phones, isShowAll) => {
           <h2 class="font-semibold text-amber-700">BDT ${index}0,000</h2>
 
           <div class="card-actions justify-center">
-            <button onclick="showDeetz('${phone.slug}')" class="btn btn-primary">Show Details</button>
+            <button onclick="showDeetz('${phone.slug}');show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
           </div>
         </div>
         `;
-    //step 4 Appending it to the empty container in HTML
+    //step 1 Appending it to the empty container in HTML
     phoneContainer.appendChild(phoneCard);
 
   });
@@ -66,7 +66,7 @@ const searchClick = (isShowAll) => {
   const searchInput = document.getElementById('searchField');
   const searchText = searchInput.value;
   spinLoader(true);
-  loadPhone(searchText,isShowAll);
+  loadPhone(searchText, isShowAll);
 
 }
 
@@ -76,27 +76,43 @@ const spinLoader = (isLoading) => {
 
   if (isLoading) {
     spinDIv.classList.remove('hidden');
-  }else{
+  } else {
     spinDIv.classList.add('hidden');
   }
 
 }
 
 //handling the show all button
-const handleShowAll = () =>{
+const handleShowAll = () => {
   // console.log('angta lagse');
   searchClick(true);
 }
 
 //handeling the show details button in the phone cards
-const showDeetz= async(slage)=>{
-// console.log(slage);
-const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slage}`);
-const phoneDeetz = await res.json();
-displayDeetz(phoneDeetz);
+const showDeetz = async (slage) => {
+  // console.log(slage);
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slage}`);
+  const data = await res.json();
+  const phoneDeetz = data.data;
+  displayDeetz(phoneDeetz);
 }
-//writing a function to display the phone details
-const displayDeetz = (phoneDeetz)=>{
 
+//writing a function to display the phone details in the MODAL
+const displayDeetz = (phoneDeetz) => {
   console.log(phoneDeetz);
+  const phoneDeetzContainer = document.getElementById('show-deetz-container');
+  phoneDeetzContainer.innerHTML = `
+  <img src="${phoneDeetz.image}" alt="${phoneDeetz.brand}" class="mx-auto"></img>
+  <h3 class="font-bold text-lg">${phoneDeetz.name}</h3>
+  <p class="py-2 text-sm">Contact Darius to grab this marvelous ${phoneDeetz.name}!</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Storage:</span> ${phoneDeetz.mainFeatures.storage}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Display Size:</span> ${phoneDeetz.mainFeatures.displaySize}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Chipset:</span> ${phoneDeetz.mainFeatures.chipSet}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Memory:</span> ${phoneDeetz.mainFeatures.memory}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Slug:</span> ${phoneDeetz.slug}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Release Date:</span> ${phoneDeetz.releaseDate}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">Brand:</span> ${phoneDeetz.brand}</p>
+  <p class="py-1 text-base text-slate-500"> <span class ="font-bold text-black">GPS:</span> ${phoneDeetz.others.GPS}</p>
+
+  `;
 }
