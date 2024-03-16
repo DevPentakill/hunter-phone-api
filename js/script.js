@@ -93,5 +93,10 @@ const showDeetz= async(slage)=>{
 // console.log(slage);
 const res = await fetch(`https://openapi.programming-hero.com/api/phone/${slage}`);
 const phoneDeetz = await res.json();
-console.log(phoneDeetz);
+displayDeetz(phoneDeetz);
+}
+//writing a function to display the phone details
+const displayDeetz = (phoneDeetz)=>{
+
+  console.log(phoneDeetz);
 }
